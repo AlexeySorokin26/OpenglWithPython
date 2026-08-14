@@ -49,6 +49,6 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
     display()
-    pygame.display.flip()
+    pygame.display.flip() # changes buffer
     pygame.time.wait(100);
 pygame.quit()
