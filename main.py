@@ -41,14 +41,27 @@ def display():
     wireCube()
     glPopMatrix()
 
+def init_ortho():
+    glMatrixMode(GL_PROJECTION) # choose matrix by provide in argument
+    glLoadIdentity() # clear current (which one we have choosen)
+    gluOrtho2D(0, 640, 0, 480)
+
 
 done = False
-initialise()
+init_ortho()
 while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-    display()
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+    glMatrixMode(GL_MODELVIEW)
+    glLoadIdentity()
+
+    glPointSize(5)
+    glBegin(GL_POINTS)
+    glVertex2i(100, 50)
+    glEnd()
+    
     pygame.display.flip() # changes buffer
     pygame.time.wait(100);
 pygame.quit()
